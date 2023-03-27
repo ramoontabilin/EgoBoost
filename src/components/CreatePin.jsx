@@ -10,7 +10,6 @@ import Spinner from './Spinner'
 const CreatePin = ({ user }) => {
 	const [title, setTitle] = useState('')
 	const [about, setAbout] = useState('')
-	const [destination, setDestination] = useState('')
 	const [loading, setLoading] = useState(false)
 	const [fields, setFields] = useState(null)
 	const [category, setCategory] = useState(null)
@@ -41,12 +40,11 @@ const CreatePin = ({ user }) => {
 	}
 
 	const savePin = () => {
-		if (title && about && destination && imageAsset?._id && category) {
+		if (title && about && imageAsset?._id && category) {
 			const doc = {
 				_type: 'pin',
 				title,
 				about,
-				destination,
 				image: {
 					_type: 'image',
 					asset: {
@@ -140,13 +138,6 @@ const CreatePin = ({ user }) => {
 						value={about}
 						onChange={(e) => setAbout(e.target.value)}
 						placeholder='What is your pin about'
-						className='outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2'
-					/>
-					<input
-						type="text"
-						value={destination}
-						onChange={(e) => setDestination(e.target.value)}
-						placeholder='Add a destination link'
 						className='outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2'
 					/>
 					<div className='flex flex-col'>
